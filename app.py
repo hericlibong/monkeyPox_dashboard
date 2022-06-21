@@ -3,6 +3,7 @@ import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import  Output, Input
 from ipyslickgrid import show_grid
+from markdown import Markdown
 import plotly.express as px
 import plotly.graph_objs as go
 import dash_bootstrap_components as dbc
@@ -10,11 +11,18 @@ import dash_bootstrap_components as dbc
 import pandas as pd
 import datetime
 
-data_pox = pd.read_csv('df_monkeyPox.csv')
+data_pox = pd.read_csv('df_monkeyPoxTimeSerie.csv')
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.COSMO], 
                 meta_tags=[{'name':'viewpoort', 
                             'content':'width=device-width, initial-scale= 1.0'}])
+
+####  Set markdown text ###
+Markdown_text = '''
+Visualizing the data produced by the 
+[Global.health](https://github.com/globaldothealth/monkeypox) 
+team on the 2022 monkeypox outbreak.
+'''
 
 
 ##### Set left controls tools ####
@@ -31,13 +39,13 @@ control = dbc.Card([
             html.P('Last Upgrade : ' + str(data_pox['date'].iloc[-1]),  
                    style = {'color': 'orange'}),
             
-            html.H5(f"{str(data_pox[data_pox['Country']=='World']['acc_confirmed'].max())} World Confirmed Cases",  
-                   className= 'bg-info',  style  = {'textAlign':'left'}),
-            html.H6(f"{str(len(data_pox['Country'].unique()))} Countries ", 
-                   className= "badge bg-info", style =  {'textAlign':'left'} )
+            # html.H5(f"{str(data_pox[data_pox['Country']=='World']['acc_confirmed'].max())} World Confirmed Cases",  
+            #        className= 'bg-info',  style  = {'textAlign':'left'}),
+            # html.H6(f"{str(len(data_pox['Country'].unique()))} Countries ", 
+            #        className= "badge bg-info", style =  {'textAlign':'left'} )
         ])
     ])
-], body=True)
+], body=True, style = {'padding-top': '15px', 'verticalAlign':'top'})
 
 app.layout = dbc.Container([
     
@@ -45,19 +53,17 @@ app.layout = dbc.Container([
         dbc.Col([
             html.H1('MonkeyPox Data Explorer in non endemics Countries', className =  'text-left text-capitalize text-primary', 
                     style = {'display':'inline-block'}),
-            dcc.Markdown('''
-                         Visualizing the data produced by the [Global.health](https://github.com/globaldothealth/monkeypox) team on the 2022 monkeypox outbreak.
-''')],width = 6),
+            dcc.Markdown(children=Markdown_text)],width = 6),
         
     
         ], className = 'd-flex flex-row'),
-    html.Hr(),
+    html.Hr(style = {'margin-top':'25px'}),
    
     dbc.Row([
         dbc.Col(control, md=4, className='align-top'),
         dbc.Col(dcc.Graph(id="ligne-graph"), md=8)
         
-    ], align='center')
+    ])
     
 ])
 
