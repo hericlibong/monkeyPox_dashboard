@@ -43,12 +43,18 @@ app.layout = dbc.Container([
     
     dbc.Row([
         dbc.Col([
-            html.H1('MonkeyPox distribution in non endemics Countries', className =  'text-left text-capitalize text-primary'),
-            html.Hr()], width = 6),
+            html.H1('MonkeyPox Data Explorer in non endemics Countries', className =  'text-left text-capitalize text-primary', 
+                    style = {'display':'inline-block'}),
+            dcc.Markdown('''
+                         Visualizing the data produced by the [Global.health](https://github.com/globaldothealth/monkeypox) team on the 2022 monkeypox outbreak.
+''')],width = 6),
+        
+    
         ], className = 'd-flex flex-row'),
+    html.Hr(),
    
     dbc.Row([
-        dbc.Col(control, md=4),
+        dbc.Col(control, md=4, className='align-top'),
         dbc.Col(dcc.Graph(id="ligne-graph"), md=8)
         
     ], align='center')
