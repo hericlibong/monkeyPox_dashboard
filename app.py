@@ -29,21 +29,26 @@ team on the 2022 monkeypox outbreak.
 
 control = dbc.Card([
     html.Div([
-        dbc.Label('Overview', className = 'text-uppercase font-weight-bold'), 
+        dbc.Label('Overview', className = 'text-uppercase font-weight-bold d-inline-block text-dark' ), 
+        dbc.Label('Last Update : ' + str(data_pox['date'].iloc[-1]), className='text-warning d-inline-block font-italic badge', style={'padding-left':'15px'}),
         dcc.Dropdown(id= 'my_dropdown', 
                      placeholder= 'select countries', 
                      options= [{'label':c, 'value':c} for c  in sorted(data_pox.Country.unique())],
                      value = data_pox.Country.unique()[-1], 
                      multi = True),
-        dbc.CardBody([
-            html.P('Last Upgrade : ' + str(data_pox['date'].iloc[-1]),  
-                   style = {'color': 'orange'}),
-            
-            # html.H5(f"{str(data_pox[data_pox['Country']=='World']['acc_confirmed'].max())} World Confirmed Cases",  
-            #        className= 'bg-info',  style  = {'textAlign':'left'}),
-            # html.H6(f"{str(len(data_pox['Country'].unique()))} Countries ", 
-            #        className= "badge bg-info", style =  {'textAlign':'left'} )
-        ])
+        html.Hr(),
+        dbc.Label('World & Country Data Informations',  className= 'text-uppercase, font-weight-bold  p-2 text-left'),
+        dcc.Dropdown(id='my_dropdown2', className='dropdown open',
+            options=[{'label':c, 'value':c} for  c in sorted(data_pox.Country.unique())],
+            value='World',
+            multi = False),
+        dcc.Graph(id='indicator_confirmed', config = {'displayModeBar': False}),
+        
+        html.P('Global Cases :  '+ str(data_pox[data_pox['Country']=='World']['acc_confirmed'].max())),
+        html.P('New Cases : '+ str(data_pox[data_pox['Country']=='World']['new_daily_cases'].iloc[-1]), 
+               style = {'display':'inline-block'}),
+        #dcc.Graph(id = 'indic'),
+        html.Hr()
     ])
 ], body=True, style = {'padding-top': '15px', 'verticalAlign':'top'})
 
@@ -51,7 +56,8 @@ app.layout = dbc.Container([
     
     dbc.Row([
         dbc.Col([
-            html.H1('MonkeyPox Data Explorer in non endemics Countries', className =  'text-left text-capitalize text-primary', 
+            html.H1('MonkeyPox Data Explorer in non endemics Countries', 
+                    className =  'text-left text-capitalize text-primary', 
                     style = {'display':'inline-block'}),
             dcc.Markdown(children=Markdown_text)],width = 6),
         
@@ -60,10 +66,10 @@ app.layout = dbc.Container([
     html.Hr(style = {'margin-top':'25px'}),
    
     dbc.Row([
-        dbc.Col(control, md=4, className='align-top'),
-        dbc.Col(dcc.Graph(id="ligne-graph"), md=8)
+        dbc.Col(control, md=3, className='align-top'),
+        dbc.Col(dcc.Graph(id="ligne-graph"), md=9)
         
-    ])
+    ], className = 'd-flex flex-row')
     
 ])
 
@@ -79,14 +85,21 @@ def update_ligneGraph(value):
                   color = 'Country', 
                   line_shape = 'spline', 
                   hover_name = 'Country', 
-                  hover_data = ['acc_confirmed', 'confirmed', 'date'],
+                  hover_data = ['acc_confirmed', 'new_daily_cases', 'date'],
                   render_mode = 'svg',
                   labels={'acc_confirmed': 'Confirmed Cases', 
-                          'confirmed': 'Daily Cases'},
+                          'new_daily_cases': 'Daily Cases'},
                   template = 'plotly_white')
-    fig.update_layout(title = {'text':"Monkey Pox Evolution"}, width=800)
+    fig.update_layout(title = {'text': '<b>' + 'MonkeyPox : ' + '</b>' +  'Cumulative Confirmed Cases by Date, Country'},
+                      font_family = 'Arial',width=800)
     
     return fig
+
+@app.callback(Output('indicator_confirmed', 'figure'), [Input('my_dropdown2', 'value')])
+def  update_indicator(value):
+    value_confirmed = data_pox[data_pox['Country'].isin(value)]['acc_confirmed'].iloc[-1]- data_pox[data_pox['Country'].isin(value)]['acc_confirmed'].iloc[-2]
+    delta_confirmed = data_pox[data_pox['Country'].isin(value)]['acc_confirmed'].iloc[-2]- data_pox[data_pox['Country'].isin(value)]['acc_confirmed'].iloc[-3]
+    
     
 
 

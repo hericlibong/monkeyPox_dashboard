@@ -1,4 +1,4 @@
-Country,date,new_daily_cases,acc_confirmed,latitude,longitude
+Country,date,confirmed,acc_confirmed,latitude,longitude
 0,Argentina,2022-05-01,0,0,-38.416097,-63.616672
 1,Argentina,2022-05-02,0,0,-38.416097,-63.616672
 2,Argentina,2022-05-03,0,0,-38.416097,-63.616672
