@@ -1,0 +1,82 @@
+Country,Continents,Country_ISO3
+0,England,Europe,GBR
+1185,Portugal,Europe,PRT
+1587,Spain,Europe,ESP
+2969,United States,North America,USA
+3428,Canada,North America,CAN
+3790,Sweden,Europe,SWE
+3818,Italy,Europe,ITA
+4019,France,Europe,FRA
+4518,Belgium,Europe,BEL
+4635,Australia,Oceania,AUS
+4649,Germany,Europe,DEU
+5703,Netherlands,Europe,NLD
+5960,Israel,Asia,ISR
+6004,Switzerland,Europe,CHE
+6095,Greece,Europe,GRC
+6099,Austria,Europe,AUT
+6136,Argentina,South America,ARG
+6144,Denmark,Europe,DNK
+6162,Morocco,Africa,MAR
+6166,Slovenia,Europe,SVN
+6175,Scotland,Europe,GBR
+6209,United Arab Emirates,Asia,ARE
+6222,Finland,Europe,FIN
+6226,Wales,Europe,GBR
+6236,Northern Ireland,Europe,GBR
+6242,Sudan,Africa,SDN
+6243,Bolivia,South America,BOL
+6246,Iran,Asia,IRN
+6252,Ecuador,South America,ECU
+6254,Malta,Europe,MLT
+6258,Ireland,Europe,IRL
+6297,Mexico,North America,MEX
+6309,Pakistan,Asia,PAK
+6310,French Guiana,South America,GUF
+6312,Thailand,Asia,THA
+6321,Peru,South America,PER
+6325,Brazil,South America,BRA
+6399,Malaysia,Asia,MYS
+6402,Hungary,Europe,HUN
+6421,Norway,Europe,NOR
+6438,Paraguay,South America,PRY
+6439,Costa Rica,North America,CRI
+6440,Gibraltar,Europe,GIB
+6441,Mauritius,Africa,MUS
+6444,Haiti,North America,HTI
+6445,Uruguay,South America,URY
+6449,Latvia,Europe,LVA
+6451,Cayman Islands,North America,CYM
+6452,Kosovo,Europe,SRB
+6453,Turkey,Asia,TUR
+6458,Bahamas,North America,BHS
+6459,Ghana,Africa,GHA
+6477,India,Asia,IND
+6478,Iceland,Europe,ISL
+6482,Poland,Europe,POL
+6494,Bangladesh,Asia,BGD
+6495,Uganda,Africa,UGA
+6501,Cambodia,Asia,KHM
+6512,Malawi,Africa,MWI
+6513,Venezuela,South America,VEN
+6514,Romania,Europe,ROU
+6525,Georgia,Asia,GEO
+6526,Slovakia,Europe,SVK
+6527,Luxembourg,Europe,LUX
+6530,Nepal,Asia,NPL
+6531,Chile,South America,CHL
+6538,Serbia,Europe,SRB
+6539,Lebanon,Asia,LBN
+6540,South Korea,Asia,KOR
+6542,Singapore,Asia,SGP
+6543,South Africa,Africa,ZAF
+6545,Taiwan,Asia,TWN
+6546,Colombia,South America,COL
+6549,Croatia,Europe,HRV
+6550,Bulgaria,Europe,BGR
+6553,Somalia,Africa,SOM
+6556,Zambia,Africa,ZMB
+6557,Fiji,Oceania,FJI
+6558,Benin,Africa,BEN
+6561,Estonia,Europe,EST
+6562,Puerto Rico,North America,PRI
