@@ -72,6 +72,7 @@ figpie.update_layout(title = 'Percent of Cases per Continent',
 
 
 ##### table  infos ###
+datapie = datapie.rename(columns={'acc_confirmed': 'Confirmed Cases'})
 
 continent_table = dbc.Table.from_dataframe(datapie, striped=True, bordered=True, hover=True)
 

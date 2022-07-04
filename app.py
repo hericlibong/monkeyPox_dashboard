@@ -143,6 +143,9 @@ control_review = dbc.Card([
              ### LAYOUT SETTINGS #####  
 
 app.layout = dbc.Container([
+    dbc.Row([
+        
+        ], style = {'background-color':'blue'}),
     
     dbc.Row([
         dbc.Col([
